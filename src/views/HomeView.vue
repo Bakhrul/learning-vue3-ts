@@ -1,18 +1,25 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
+  <div>{{ person.name }}</div>
+  {{ person.cita }}
+  <input type="text" v-model="person.cita" />
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+<script setup lang="ts">
+import { reactive, onMounted } from "vue";
 
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class HomeView extends Vue {}
+const person = reactive({
+  name: "John Doe",
+  cita: "",
+});
+
+onMounted(() => {
+  changeName();
+});
+
+function changeName() {
+  person.name = "Bakhrul";
+}
 </script>
