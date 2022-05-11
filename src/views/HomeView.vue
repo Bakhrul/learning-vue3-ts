@@ -3,13 +3,14 @@
     <img alt="Vue logo" src="../assets/logo.png" />
   </div>
   <div>{{ person.name }}</div>
-  {{ person.cita }}
-  <input type="text" v-model="person.cita" />
+  {{ hobby }}
+  <input type="text" v-model="hobby" />
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from "vue";
+import { reactive, ref, onMounted } from "vue";
 
+const hobby = ref("");
 const person = reactive({
   name: "John Doe",
   cita: "",
@@ -17,6 +18,7 @@ const person = reactive({
 
 onMounted(() => {
   changeName();
+  hobby.value = "Mancing";
 });
 
 function changeName() {
